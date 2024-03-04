@@ -1,6 +1,7 @@
 
 public class Main {
     public static void main(String[] args) {
+        //PartOneTest
         String[][] test = {{".","#","#","#"},
                 {".","#","#","#"},
                 {".",".",".","."},
@@ -9,6 +10,8 @@ public class Main {
                 {"#","#","#","."},
                 {"#","#","#","."}};
         MazeSolver test1 = new MazeSolver(test);
-        System.out.println(test1.mazeAnswer());
+        System.out.println(test1.mazeAnswerPartOne());
+        //PartTwoTest
+
     }
 }

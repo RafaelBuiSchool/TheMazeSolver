@@ -3,7 +3,8 @@ public class MazeSolver {
     public MazeSolver(String[][] arr){
         this.arr = arr;
     }
-    public String mazeAnswer(){
+    //Use this method for part one of the Project
+    public String mazeAnswerPartOne(){
         String result = "";
         for(int row = 0; row < arr.length;row++){
             for(int col = 0; col < arr[0].length;col++){
@@ -18,5 +19,8 @@ public class MazeSolver {
             }
         }
         return result;
+    }
+    public String mazeAnswerPartTwo(){
+
     }
 }
