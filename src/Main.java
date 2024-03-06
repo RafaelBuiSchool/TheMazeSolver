@@ -13,41 +13,46 @@ public class Main {
         int col = 0;
         int previousRow = 0;
         int previousCol = 0;
-        int temp = 0;
+        boolean moveLeft = true;
+        boolean moveRight = true;
+        boolean moveDown = true;
+        boolean moveUp = true;
         while (mazeCompleted == false) {
-            result += "(" + row + ", " + col + ") ---> ";
-            previousCol = col;
-            previousRow = row;
-            if(goLeft(row,col,maze) == true){
-                temp = col;
-                temp -= 1;
-                if(temp != previousCol){
-                    col -= 1;
-                }
-            }
-            else if(goRight(row,col,maze) == true){
-                temp = col;
-                temp += 1;
-                if(temp!=previousCol) {
-                    col += 1;
-                }
-            }
-            else if(goDown(row,col,maze)==true){
-                temp = row;
-                temp += 1;
-                if(temp!= previousRow) {
-                    row += 1;
-                }
-            }
-            else if(goUp(row,col,maze)==true){
-                temp = row;
-                temp -=1;
-                if(temp!= previousRow){
-                    row-=1;
-                }
-            }
-            else if(row == maze.length-1 && col == maze[0].length-1){
+            if(gameWon(row,col,maze) == true){
                 mazeCompleted = true;
+                result += "(" + row + ", " + col + ")";
+            }
+            else if(goLeft(row,col,maze) == true && moveLeft == true){
+                result += "(" + row + ", " + col + ") ---> ";
+                col-=1;
+                moveRight = false;
+                moveLeft = true;
+                moveDown = true;
+                moveUp = true;
+            }
+            else if(goRight(row,col,maze) == true && moveRight == true){
+                result += "(" + row + ", " + col + ") ---> ";
+                col+=1;
+                moveRight = true;
+                moveLeft = false;
+                moveDown = true;
+                moveUp = true;
+            }
+            else if(goDown(row,col,maze)==true && moveDown == true){
+                result += "(" + row + ", " + col + ") ---> ";
+                row+=1;
+                moveRight = true;
+                moveLeft = true;
+                moveDown = true;
+                moveUp = false;
+            }
+            else if(goUp(row,col,maze)==true && moveUp == true){
+                result += "(" + row + ", " + col + ") ---> ";
+                row-=1;
+                moveRight = true;
+                moveLeft = true;
+                moveDown = false;
+                moveUp = true;
             }
             else{
                 maze[row][col] = "#";
@@ -57,6 +62,12 @@ public class Main {
 
         }
         System.out.println(result);
+    }
+    public static boolean gameWon(int row, int col, String[][] maze){
+        if(row == maze.length-1 && col == maze[0].length-1 ){
+            return true;
+        }
+        return false;
     }
     public static boolean goLeft(int row, int col, String[][] maze){
         try{
