@@ -11,8 +11,6 @@ public class Main {
         boolean mazeCompleted = false;
         int row = 0;
         int col = 0;
-        int previousRow = 0;
-        int previousCol = 0;
         boolean moveLeft = true;
         boolean moveRight = true;
         boolean moveDown = true;
@@ -59,8 +57,8 @@ public class Main {
                 row = 0;
                 col = 0;
                 result = "";
-            }
 
+            }
         }
         System.out.println(result);
     }
