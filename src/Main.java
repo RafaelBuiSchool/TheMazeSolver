@@ -58,6 +58,7 @@ public class Main {
                 maze[row][col] = "#";
                 row = 0;
                 col = 0;
+                result = "";
             }
 
         }
